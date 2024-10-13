@@ -1,6 +1,6 @@
 pqrs:
   type: pandas.CSVDataSet
-  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/Consumer_Complaints.csv
+  filepath: C:/Users/sergi/Documents/prueba nequi/Consumer_Complaints.csv #gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/Consumer_Complaints.csv
   load_args:
     encoding: "latin-1"
     

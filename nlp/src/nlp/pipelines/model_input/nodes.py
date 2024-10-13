@@ -15,6 +15,11 @@ from imblearn.over_sampling import SMOTE
 import numpy as np
 import logging
 
+
+import src.bbog_gd_seguros_churn_ml.pipelines.data_processing.nodes as processing
+import src.bbog_gd_seguros_churn_ml.pipelines.primary.nodes as primary
+import src.bbog_gd_seguros_churn_ml.pipelines.feature.nodes as feature
+
 logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -188,6 +193,9 @@ def create_final_pipeline(df: pd.DataFrame, params: dict) -> RandomizedSearchCV:
     smote = SMOTE(random_state=params["random_state"])
     X_train_smote, y_train_smote = smote.fit_resample(X_train, y_train)
     
+    logger.info("Distribución después del overrsampling:")
+    logger.info(y_train_smote.value_counts())
+    
     # Calcular scale_pos_weight dinámicamente
     class_counts = y_train_smote.value_counts()
     scale_pos_weight = class_counts[0] / class_counts[1]
@@ -219,4 +227,18 @@ def create_final_pipeline(df: pd.DataFrame, params: dict) -> RandomizedSearchCV:
     logger.info(f"Exactitud en el conjunto de prueba: {accuracy_test}")
     
     # Devolver el modelo entrenado
-    return model_search
+    return model_search ,report_train,report_test
+
+#8
+def parse_classification_report(report):
+        """
+        Función auxiliar para convertir un string de reporte de clasificación en un DataFrame.
+        """
+        lines = report.split('\n')
+        rows = []
+        for line in lines[2:-3]:  # Ignorar las primeras dos y últimas tres líneas
+            line = line.strip().split()
+            if len(line) > 0:
+                rows.append(line)
+        columns = ['Class', 'Precision', 'Recall', 'F1-Score', 'Support']
+        return pd.DataFrame(rows, columns=columns)
