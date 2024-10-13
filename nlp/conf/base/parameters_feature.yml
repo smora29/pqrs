@@ -1,0 +1,40 @@
+# This is a boilerplate parameters config generated for pipeline 'feature'
+# using Kedro 0.19.9.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
+
+
+
+ 
+tfidf: ['issue', 'company public response','sub-issue'] # ,'product_issue_interaction',
+#'subproduct_issue_interaction','subproduct_via_interaction','product_via_interaction']
+
+# Columnas de interacciones complejas (también aplicarán TF-IDF)
+columns_tfidf_interactions:
+  product_issue_interaction: "product_issue_interaction"
+  subproduct_issue_interaction: "subproduct_issue_interaction"
+  subproduct_via_interaction: "subproduct_via_interaction"
+  product_via_interaction: "product_via_interaction"
+
+
+
+# Columnas numéricas o derivadas
+columns_numerical:
+  issue_text_length: "issue_text_length"
+  sentiment_company_response: "sentiment_company_response"
+# parameters.yml
+
+# Columnas de texto para aplicar TF-IDF
+column_issue: "issue"
+column_response: "company public response"
+
+# Columnas categóricas para codificación (One-Hot o Label Encoding)
+#column_product: ["product","sub-product","submitted via"]
+column_product:
+  - product
+  - sub-product
+  - submitted via
+
+# Seleccion de caracteristicas 
+top_n: 30

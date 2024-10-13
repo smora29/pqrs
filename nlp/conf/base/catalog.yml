@@ -1,0 +1,60 @@
+pqrs:
+  type: pandas.CSVDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/Consumer_Complaints.csv
+  load_args:
+    encoding: "latin-1"
+    
+master_standarizada:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/prueba_standard.parquet
+#prmary 
+master_null:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/prueba_sin_null.parquet
+  
+master_new:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/master_new.parquet
+  
+master_with_target:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/master_with_target.parquet
+
+#feature  
+df_tfidf_issue:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_tfidf_issue.parquet
+  
+df_tfidf_response:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_tfidf_response.parquet
+  
+df_encoded_product:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_encoded_product.parquet
+  
+df_with_text_length:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_with_text_length.parquet
+  
+df_with_sentiment:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_with_sentiment.parquet 
+  
+df_temp:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_tempt.parquet
+
+df_filtrado:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_filtrado.parquet
+  
+importances_df:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/importances_df.parquet
+  
+#model
+df_balanced:
+  type: pandas.ParquetDataSet
+  filepath: gs://bdb-gcp-cds-pr-ac-ba-analitica-avanzada/tutorial-aa/data/01_raw/df_balanced.parquet
+  

@@ -1,0 +1,30 @@
+# This is a boilerplate parameters config generated for pipeline 'model_input'
+# using Kedro 0.19.9.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
+
+target_reduction: 0.25
+
+random_state: 42
+
+test_size: 40
+
+drop_columns: ['date_received', 'complaint id']
+  
+target: "effective_response"
+
+model_params:
+  n_estimators: [50, 100, 3]  # Reducido para pruebas rápidas
+  max_depth: [2, 10, 2]       # Menor profundidad para reducir tiempo de cálculo
+  learning_rate: [0.01, 0.1, 2]  # Menos tasas de aprendizaje para pruebas más rápidas
+  subsample: [0.5, 0.8, 2]   # Reducida la fracción de muestras usadas
+  colsample_bytree: [0.5, 0.8, 2]  # Reducida la fracción de características usadas
+  gamma: [0, 1, 2]           # Gamma más limitada
+  n_iter: 5                  # Menor número de iteraciones para RandomizedSearch
+  cv: 2                      # Validación cruzada de 2 pliegues para reducir tiempo
+  scores: "f1"         # Métrica de optimización
+  verbose: 1                 # Nivel de verbosidad para seguimiento
+  refit: "f1"          # Métrica objetivo para ajustar el modelo final
+  
+  
