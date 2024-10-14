@@ -59,6 +59,8 @@ en caso de que necesiten bajar la version actual de este repositorio lo pueden h
 para la ejecucion del pipeline de una capa lo hacen mediante el comando "kedro run --pipeline nombre_pipeline" ejemplo kedro run --pipeline data_processing
 
 
+Los modulos CT ,CD y CI van configurados con estas instrucciones 
+
 
 
 
