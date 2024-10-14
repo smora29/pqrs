@@ -1,0 +1,51 @@
+name: Continuous Training Pipeline
+
+on:
+  schedule:
+    # Ejecutar todos los días a las 2:00 AM
+    - cron: '0 2 * * *'
+  push:
+    branches:
+      - main
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+
+    - name: Ingest New Data
+      run: |
+        python src/data/ingest_new_data.py
+
+    - name: Preprocess Data and Feature Engineering
+      run: |
+        kedro run --pipeline raw
+        kedro run --pipeline primary
+        kedro run --pipeline feature
+
+    - name: Train Model
+      run: |
+        kedro run --pipeline model_input
+
+    - name: Evaluate Model
+      run: |
+        python src/models/evaluate_model.py
+
+    - name: Deploy Model if Performance is Satisfactory
+      if: success()
+      run: |
+        python src/models/deploy_model.py
