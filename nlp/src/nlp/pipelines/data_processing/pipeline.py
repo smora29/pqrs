@@ -4,13 +4,10 @@ Pipeline de la capa raw
 
 from kedro.pipeline import Pipeline, node, pipeline
 from .nodes import (
-    #validar_columnas,
     convertir_a_minusculas,
     standardize_strings,
     values_to_null,
-    #change_dtypes,
-    #validate_unique_id_period_pd,
-    #create_targets_pd
+
 )
 
 def create_pipeline(**kwargs) -> Pipeline:

@@ -10,6 +10,8 @@ conf/**/*credentials*
 
 # ignore everything in the following folders
 data/**
+kedro-env-new/**
+
 
 # except their sub-folders
 !data/**/
@@ -19,6 +21,7 @@ data/**
 
 # keep also the example dataset
 !data/01_raw/*
+
 
 
 ##########################
@@ -149,3 +152,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+nlp/data/01_raw/Consumer_Complaints.csv

@@ -17,10 +17,11 @@ import numpy as np
 import logging
 
 
-import src.bbog_gd_seguros_churn_ml.pipelines.data_processing.nodes as processing
-import src.bbog_gd_seguros_churn_ml.pipelines.primary.nodes as primary
-import src.bbog_gd_seguros_churn_ml.pipelines.feature.nodes as feature
-import src.bbog_gd_seguros_churn_ml.pipelines.model_input.nodes as model
+import src.nlp.pipelines.data_processing.nodes as processing
+import src.nlp.pipelines.primary.nodes as primary
+import src.nlp.pipelines.feature.nodes as feature
+import src.nlp.pipelines.model_input.nodes as model
+
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
