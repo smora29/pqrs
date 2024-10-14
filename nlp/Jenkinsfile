@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/smora29/pqrs.git'
+            }
+        }
+        stage('Setup Python Environment') {
+            steps {
+                sh 'python3 -m venv venv'
+                sh 'source venv/bin/activate'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Linting') {
+            steps {
+                sh 'flake8 src/ --max-line-length=88 --ignore=E203,W503'
+            }
+        }
+        stage('Run Unit Tests') {
+            steps {
+                sh 'pytest tests/'
+            }
+        }
+        stage('Build and Test Kedro Pipeline') {
+            steps {
+                sh 'kedro build-pipeline'
+                sh 'kedro test-pipeline'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/logs/*.log', allowEmptyArchive: true
+            junit 'reports/**/*.xml'
+        }
+        success {
+            echo 'Pipeline completed successfully'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
+}
