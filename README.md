@@ -50,3 +50,15 @@ Evaluación del modelo: Incluye métricas como classification_report.
 4. Resultados
 El modelo final genera predicciones y se analizan las características más importantes mediante la métrica de importancia de las características.
 
+Los pipelines relacionados al los puntos mencionados en el apartado anterior tienen relacion en la siguiente ruta:
+nlp/scr/pipelines/nombre_capa
+
+Para su ejecucion es necesario activar el ambiente "source kedro-env-new/Scripts/activate"
+ingresar a la carpeta del repositorio cd ruta/local 
+en caso de que necesiten bajar la version actual de este repositorio lo pueden hacer atravez del comando " git pull origin development" desde su terminal 
+para la ejecucion del pipeline de una capa lo hacen mediante el comando "kedro run --pipeline nombre_pipeline" ejemplo kedro run --pipeline data_processing
+
+
+
+
+
