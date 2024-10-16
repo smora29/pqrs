@@ -9,3 +9,16 @@ notebook
 scikit-learn~=1.5.1; python_version >= "3.9"
 scikit-learn<=1.4.0,>=1.0; python_version < "3.9"
 setuptools; python_version >= "3.12"
+pytest-cov~=3.0
+pytest-mock>=1.7.1, <2.0
+pytest~=6.2
+scikit-learn~= 1.0.2
+imbalanced-learn~=0.1
+pandas-gbq~=0.1
+pandas-profiling~=3.6
+google-cloud-aiplatform~=1.2
+feature-engine~=1.5
+xgboost==1.7.5
+textblob==0.17.1
+seaborn==0.12.2
+imbalanced-learn==0.10.1
